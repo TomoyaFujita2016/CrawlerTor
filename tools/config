@@ -1,0 +1,2 @@
+TOR_DIR /usr/local/etc/tor/
+CNF_DIR_NAME cnfs_crawler/
