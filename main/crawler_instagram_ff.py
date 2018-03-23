@@ -55,12 +55,16 @@ def getHTML(url, thread_num):
     FLAG_GO = False
     while not FLAG_GO:
         try:
+            time.sleep(1)
             result = sessions[thread_num].get(url)
             # TODO Also support other status codes
             # TODO Restart tor when a request gets 429
+            
             if result.status_code == 429:
                 logger.info("sleep for 429")
-                time.sleep(SLEEP_SEC)
+                time.sleep(60)
+            elif result.status_code == 404:
+                logger.info("NOT FOUND!")
             else:
                 FLAG_GO = True
             
